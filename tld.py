@@ -19,13 +19,9 @@ class DomainGetter:
         else:
           yield False
 
-def taken(domain):
-  return ''
-  a = sys('nslookup %s' % domain)
 
-          
 domains = DomainGetter()
 
 for domain in domains:
   if domain:
-    print domain, taken(domain)
+    print domain
