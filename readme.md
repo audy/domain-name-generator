@@ -1,4 +1,6 @@
-# readme
+# Clever Domain Name Generator
+
+Generates domains where the TLD forms part of a word.
 
 	python tld.py
 
