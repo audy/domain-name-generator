@@ -20,8 +20,9 @@ class DomainGetter:
           yield False
 
 def taken(domain):
+  return ''
   a = sys('nslookup %s' % domain)
-  quit()
+
           
 domains = DomainGetter()
 
