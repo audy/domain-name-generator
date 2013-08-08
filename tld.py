@@ -1,27 +1,36 @@
 import sys
 from random import choice
+import argparse
 
-class DomainGetter:
-
-  def __init__(self):
-    self.words = [i.strip().lower() for i in open('/usr/share/dict/words').readlines()]
-    self.tlds = [i.split()[0].strip().lower() for i in open('tlds.txt').readlines()]
-
-  def __iter__(self):
-    while len(self.words) > 1:
-
-      word = choice(self.words)
-      self.words.remove(word)
-
-      for tld in self.tlds:
-        if word.endswith(tld):
-          yield '%s.%s' % (word.rstrip(tld), tld)
-        else:
-          yield False
+def parse_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--words_file', help='file with list of words', default='/usr/share/dict/words')
+    parser.add_argument('--tlds_file', help='file with list of tlds', default='tlds.txt')
+    return parser.parse_args()
 
 
-domains = DomainGetter()
+def words(words_file):
+    ''' iterate over list of words in text file '''
+    with open(words_file) as handle:
+        for word in handle:
+            yield word.strip().lower()
 
-for domain in domains:
-  if domain:
-    print domain
+
+def tlds(tlds_file):
+    ''' iterate over list of tlds in text file '''
+    with open(tlds_file) as handle:
+        for tld in handle:
+            yield tld.split()[0].strip().lower()
+
+def get_domains(words_file, tlds_file):
+    for word in words(words_file):
+        for tld in tlds(tlds_file):
+          if word.endswith(tld):
+              yield '%s.%s' % (word.rstrip(tld), tld)
+
+
+if __name__ == '__main__':
+    args = parse_arguments()
+
+    for domain in get_domains(args.words_file, args.tlds_file):
+        print domain
