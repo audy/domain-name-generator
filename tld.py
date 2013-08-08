@@ -6,9 +6,18 @@ def parse_arguments():
     ''' parse the arguments '''
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--words_file', help='file with list of words', default='/usr/share/dict/words')
-    parser.add_argument('--tlds_file', help='file with list of tlds', default='tlds.txt')
-    parser.add_argument('--tlds', help='manually specify tlds as comma-separated list', default=False)
+
+    parser.add_argument('--words_file',
+                        help='file with list of words (default: /usr/share/dict/words)',
+                        default='/usr/share/dict/words')
+
+    parser.add_argument('--tlds_file',
+                        help='file with list of tlds (default: tlds.txt)',
+                        default='tlds.txt')
+
+    parser.add_argument('--tlds',
+                        help='(optional) manually specify tlds as comma-separated list',
+                        default=False)
 
     return parser.parse_args()
 
