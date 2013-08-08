@@ -1,4 +1,4 @@
-from os import system as sys
+import sys
 from random import choice
 
 class DomainGetter:
