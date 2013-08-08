@@ -2,22 +2,31 @@
 
 Generates domains where the TLD forms part of a word.
 
-	python tld.py
+```
+usage: tld.py [-h] [--words_file WORDS_FILE] [--tlds_file TLDS_FILE]
+              [--tlds TLDS]
 
-you must have `/usr/share/dict/words`
+optional arguments:
+  -h, --help            show this help message and exit
+  --words_file WORDS_FILE
+                        file with list of words (default:
+                        /usr/share/dict/words)
+  --tlds_file TLDS_FILE
+                        file with list of tlds (default: tlds.txt)
+  --tlds TLDS           (optional) manually specify tlds as
+   comma-separated
+                        list
+```
 
-# Examples
+### Example:
 
-    fled.ge
-    angeli.na
-    supercla.im
-    chokebo.re
-    throwst.er
-    kneadi.ng
-    sabbati.ne
-    heteromorpho.is
-    debasing.ly
-    subun.it
-    metatheri.an
-    exhibitive.ly
-    panca.ke
+Use with [dom](https://github.com/zachwill/dom/) to automatically find
+out if domains are available:
+
+```bash
+
+for i in $(python tld.py --tlds at)
+do
+  dom $i
+done
+```
