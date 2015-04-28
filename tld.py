@@ -9,11 +9,11 @@ def parse_arguments():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--words_file',
+    parser.add_argument('--words-file',
                         help='file with list of words (default: /usr/share/dict/words)',
                         default='/usr/share/dict/words')
 
-    parser.add_argument('--tlds_file',
+    parser.add_argument('--tlds-file',
                         help='file with list of tlds (default: tlds.txt)',
                         default='tlds.txt')
 
