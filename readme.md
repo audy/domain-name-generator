@@ -3,18 +3,17 @@
 Generates domains where the TLD forms part of a word.
 
 ```
-usage: tld.py [-h] [--words_file WORDS_FILE] [--tlds_file TLDS_FILE]
+usage: tld.py [-h] [--words-file WORDS_FILE] [--tlds-file TLDS_FILE]
               [--tlds TLDS]
 
 optional arguments:
   -h, --help            show this help message and exit
-  --words_file WORDS_FILE
+  --words-file WORDS_FILE
                         file with list of words (default:
                         /usr/share/dict/words)
-  --tlds_file TLDS_FILE
+  --tlds-file TLDS_FILE
                         file with list of tlds (default: tlds.txt)
-  --tlds TLDS           (optional) manually specify tlds as
-   comma-separated
+  --tlds TLDS           (optional) manually specify tlds as comma-separated
                         list
 ```
 
