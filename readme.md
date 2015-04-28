@@ -23,7 +23,6 @@ Use with [dom](https://github.com/zachwill/dom/) to automatically find out if
 domains are available:
 
 ```bash
-
 for i in $(python tld.py --tlds at)
 do
   dom $i
