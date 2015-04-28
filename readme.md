@@ -19,8 +19,8 @@ optional arguments:
 
 ### Example:
 
-Use with [dom](https://github.com/zachwill/dom/) to automatically find
-out if domains are available:
+Use with [dom](https://github.com/zachwill/dom/) to automatically find out if
+domains are available:
 
 ```bash
 
