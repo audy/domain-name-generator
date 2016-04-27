@@ -22,13 +22,8 @@ def parse_arguments():
                    help='manually specify tlds as comma-separated list',
                    default=False)
 
-    p.add_argument('--leet',
+    p.add_argument('--l33t',
                     help='generate domains that replace letters with numbers',
-                    action="store_true")
-
-    p.add_argument('--min-three-chars',
-                    help='three characters minimum, ex: 123.tld',
-                    dest="three",
                     action="store_true")
 
     return p.parse_args()
@@ -73,30 +68,20 @@ def get_domains(words, tlds):
 
 def generate_leet_versions(words):
     ''' Produce 1337 versions of words '''
-    leet_words = []
 
-    replacements = {'a': '4', 'b': '8', 'e': '3', 'g': '6', 'i': '1', 'o': '0', 's': '5', 't': '7', 'z': '2'}
+    replacements = {
+            'a': '4',
+            'b': '8',
+            'e': '3',
+            'g': '6',
+            'i': '1',
+            'o': '0',
+            's': '5',
+            't': '7',
+            'z': '2'}
 
-    ''' replace all '''
     for word in words:
-        leet_words.append(word)
-        leet_versions = set()
-        letter_options = []
-        for letter in word:
-            if letter in replacements:
-                replacement = replacements[letter]
-                letter_options.append( (letter,replacement) )
-            else:
-                letter_options.append( (letter,) )
-        for letters_in_leet_version in product(*letter_options):
-            a_leet_word = ''.join(letters_in_leet_version)
-            if a_leet_word != word:
-                leet_versions.add(a_leet_word)
-        for leet_version in list(leet_versions):
-            leet_words.append(leet_version)
-
-    return leet_words
-
+        yield ''.join([ replacements.get(l ,l) for l in word ])
 
 
 if __name__ == '__main__':
@@ -104,7 +89,7 @@ if __name__ == '__main__':
 
     words = get_words(args.words_file)
 
-    if args.leet:
+    if args.l33t:
         words = generate_leet_versions(words)
 
     if not args.tlds:
@@ -113,8 +98,4 @@ if __name__ == '__main__':
         tlds = args.tlds.split(',')
 
     for domain in get_domains(words, tlds):
-        if args.three:
-            if len( domain[:domain.find('.')] ) >= 3:
-                print domain
-        else:
-            print domain
+        print(domain)
