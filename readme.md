@@ -4,7 +4,7 @@ Generates domains where the TLD forms part of a word.
 
 ```
 usage: tld.py [-h] [--words-file WORDS_FILE] [--tlds-file TLDS_FILE]
-              [--tlds TLDS]
+              [--tlds TLDS] [--leet] [--min-three-chars]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -13,6 +13,8 @@ optional arguments:
   --tlds-file TLDS_FILE
                         file with list of tlds [tlds.txt]
   --tlds TLDS           manually specify tlds as comma-separated list
+  --leet                generate domains that replace letters with numbers
+  --min-three-chars     three characters minimum, ex: 123.tld
 
 ### Example:
 
