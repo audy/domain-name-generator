@@ -72,32 +72,18 @@ def get_domains(words, tlds):
         if word.endswith(tld)
     )
 
-def generate_leet_versions(words):
+def l33tify(domain):
     ''' Produce 1337 versions of words '''
-    leet_words = []
 
     replacements = {'a': '4', 'b': '8', 'e': '3', 'g': '6', 'i': '1', 'o': '0', 's': '5', 't': '7', 'z': '2'}
 
-    ''' replace all '''
-    for word in words:
-        leet_words.append(word)
-        leet_versions = set()
-        letter_options = []
-        for letter in word:
-            if letter in replacements:
-                replacement = replacements[letter]
-                letter_options.append( (letter,replacement) )
-            else:
-                letter_options.append( (letter,) )
-        for letters_in_leet_version in product(*letter_options):
-            a_leet_word = ''.join(letters_in_leet_version)
-            if a_leet_word != word:
-                leet_versions.add(a_leet_word)
-        for leet_version in list(leet_versions):
-            leet_words.append(leet_version)
+    word, tld = domain.split('.')
 
-    return leet_words
-
+    return ''.join([
+        replacements.get(char, char)
+        for char
+        in word
+    ]) + '.' + tld
 
 
 if __name__ == '__main__':
@@ -105,15 +91,17 @@ if __name__ == '__main__':
 
     words = get_words(args.words_file)
 
-    if args.leet:
-        words = generate_leet_versions(words)
-
     if not args.tlds:
         tlds = get_tlds(args.tlds_file)
     else:
         tlds = args.tlds.split(',')
 
-    for domain in get_domains(words, tlds):
+    domains = get_domains(words, tlds)
+
+    if args.leet:
+        domains = ( l33tify(domain) for domain in domains )
+
+    for domain in domains:
         if args.three:
             if len( domain[:domain.find('.')] ) >= 3:
                 print domain
