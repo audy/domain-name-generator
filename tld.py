@@ -54,11 +54,12 @@ def get_tlds(tlds_file):
     tlds = []
 
     with open(tlds_file) as handle:
-        for tld in handle:
-            tld = tld.split()[0].strip().lower()
-            tlds.append(tld)
 
-    return tlds
+        return [
+            line.split()[0].strip().lower()
+            for line in handle
+        ]
+
 
 
 def get_domains(words, tlds):
