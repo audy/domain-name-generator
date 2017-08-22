@@ -65,12 +65,12 @@ def get_tlds(tlds_file):
 def get_domains(words, tlds):
     ''' list domains made from words and tlds '''
 
-    for word in words:
-        for tld in tlds:
-            if word.endswith(tld):
-                yield '%s.%s' % (word.rstrip(tld), tld)
-
-
+    return (
+        '{}.{}'.format(word.rstrip(tld), tld)
+        for tld in tlds
+        for word in words
+        if word.endswith(tld)
+    )
 
 def generate_leet_versions(words):
     ''' Produce 1337 versions of words '''
