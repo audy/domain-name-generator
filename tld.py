@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 import sys
-from random import choice
-from itertools import product
 import argparse
 
 def parse_arguments():
