@@ -71,7 +71,17 @@ def get_domains(words, tlds):
 def l33tify(domain):
     ''' Produce 1337 versions of words '''
 
-    replacements = {'a': '4', 'b': '8', 'e': '3', 'g': '6', 'i': '1', 'o': '0', 's': '5', 't': '7', 'z': '2'}
+    replacements = {
+      'a': '4',
+      'b': '8',
+      'e': '3',
+      'g': '6',
+      'i': '1',
+      'o': '0',
+      's': '5',
+      't': '7',
+      'z': '2'
+    }
 
     word, tld = domain.split('.')
 
