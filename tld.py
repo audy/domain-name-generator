@@ -89,7 +89,6 @@ def l33tify(domain):
 if __name__ == '__main__':
     args = parse_arguments()
 
-
     if not args.tlds:
         tlds = get_tlds(args.tlds_file)
     else:
