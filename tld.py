@@ -26,10 +26,8 @@ def parse_arguments():
                     help='generate domains that replace letters with numbers',
                     action="store_true")
 
-    p.add_argument('--min-three-chars',
-                    help='three characters minimum, ex: 123.tld',
-                    dest="three",
-                    action="store_true")
+    p.add_argument('--min-size', default=0, type=int)
+    p.add_argument('--max-size', default=100000, type=int)
 
     return p.parse_args()
 
@@ -101,9 +99,13 @@ if __name__ == '__main__':
     if args.leet:
         domains = ( l33tify(domain) for domain in domains )
 
+    # length filter
+    domains = (
+        domain
+        for domain
+        in domains
+        if len(domain) in range(args.min_size, args.max_size)
+    )
+
     for domain in domains:
-        if args.three:
-            if len( domain[:domain.find('.')] ) >= 3:
-                print domain
-        else:
-            print domain
+        print(domain)
