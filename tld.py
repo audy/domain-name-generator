@@ -50,14 +50,13 @@ def get_tlds(tlds_file):
             for line in handle
         ]
 
-
 def iter_domains(words, tlds):
     ''' list domains made from words and tlds '''
 
     return (
         '{}.{}'.format(word.rstrip(tld), tld)
-        for tld in tlds
         for word in words
+        for tld in tlds
         if word.endswith(tld)
     )
 
