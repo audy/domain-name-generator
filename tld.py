@@ -22,10 +22,10 @@ def parse_arguments():
 
     p.add_argument('--leet',
                     help='generate domains that replace letters with numbers',
-                    action="store_true")
+                    action='store_true')
 
-    p.add_argument('--min-size', default=0, type=int)
-    p.add_argument('--max-size', default=100000, type=int)
+    p.add_argument('--min-size', default=0, type=int, help='minimum word length')
+    p.add_argument('--max-size', default=100000, type=int, help='maximum word length')
 
     return p.parse_args()
 

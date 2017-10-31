@@ -2,7 +2,6 @@
 
 Generates domains where the TLD forms part of a word.
 
-
 ```
 usage: tld.py [-h] [--words-file WORDS_FILE] [--tlds-file TLDS_FILE]
               [--tlds TLDS] [--leet] [--min-size MIN_SIZE]
@@ -16,8 +15,8 @@ optional arguments:
                         file with list of tlds [tlds.txt]
   --tlds TLDS           manually specify tlds as comma-separated list
   --leet                generate domains that replace letters with numbers
-  --min-size MIN_SIZE
-  --max-size MAX_SIZE
+  --min-size MIN_SIZE   minimum word length
+  --max-size MAX_SIZE   maximum word length
 ```
 
 ### Example:
